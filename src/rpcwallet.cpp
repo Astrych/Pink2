@@ -775,7 +775,12 @@ Value sendmany(const Array& params, bool fHelp)
     // Check funds
     int64_t nBalance = GetAccountBalance(strAccount, nMinDepth);
     if (totalAmount > nBalance)
+    {
+        cout << "==========================================" << endl;
+        cout << "TOTAL AMOUNT: " << totalAmount << endl;
+        cout << "BALANCE: " << nBalance << endl;
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Account has insufficient funds");
+    }
 
     // Send
     CReserveKey keyChange(pwalletMain);
