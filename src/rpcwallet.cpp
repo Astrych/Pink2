@@ -563,11 +563,13 @@ int64_t GetAccountBalance(CWalletDB& walletdb, const string& strAccount, int nMi
 
         if (nReceived != 0 && wtx.GetDepthInMainChain() >= nMinDepth && wtx.GetBlocksToMaturity() == 0)
         {
-            cout << "GetDepthInMainChain: " << wtx.GetDepthInMainChain() << endl;
-            cout << "GetBlocksToMaturity: " << wtx.GetBlocksToMaturity() << endl;
+            cout << "------- GetDepthInMainChain: " << wtx.GetDepthInMainChain() << endl;
+            cout << "------- GetBlocksToMaturity: " << wtx.GetBlocksToMaturity() << endl;
             nBalance += nReceived;
+            cout << "------- after nBalance += nReceived: " << nBalance << endl;
         }
         nBalance -= nSent + nFee;
+        cout << "------- after nBalance -= nSent + nFee: " << nBalance << endl;
     }
 
     cout << "====== Almost final balance ===========" << endl;

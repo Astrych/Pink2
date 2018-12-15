@@ -775,6 +775,14 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
     listSent.clear();
     strSentAccount = strFromAccount;
 
+    if (IsCoinBase() || IsCoinStake())
+    {
+        cout << "                   ====== CWalletTx::GetAmounts ===========" << endl;
+        cout << "                   IsCoinBase or IsCoinStake" << endl;
+        cout << "                   pwallet->GetCredit(): " << pwallet->GetCredit() << endl;
+        cout << "                   ========================================" << endl;
+    }
+
     // Compute fee:
     int64_t nDebit = GetDebit();
     if (nDebit > 0) // debit>0 means we signed/sent this transaction
@@ -782,6 +790,12 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         int64_t nValueOut = GetValueOut();
         nFee = nDebit - nValueOut;
     }
+
+    cout << "               ====== CWalletTx::GetAmounts ===========" << endl;
+    cout << "               nValueOut: " << nValueOut << endl;
+    cout << "               nDebit: " << nDebit << endl;
+    cout << "               nFee: " << nFee << endl;
+    cout << "               ========================================" << endl;
 
     // Sent/received.
     BOOST_FOREACH(const CTxOut& txout, vout)
