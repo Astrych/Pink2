@@ -782,16 +782,15 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         cout << "                   ========================================" << endl;
     }
 
+    cout << "               ====== CWalletTx::GetAmounts ===========" << endl;
     // Compute fee:
     int64_t nDebit = GetDebit();
     if (nDebit > 0) // debit>0 means we signed/sent this transaction
     {
         int64_t nValueOut = GetValueOut();
+        cout << "                   nValueOut: " << nValueOut << endl;
         nFee = nDebit - nValueOut;
     }
-
-    cout << "               ====== CWalletTx::GetAmounts ===========" << endl;
-    cout << "               nValueOut: " << nValueOut << endl;
     cout << "               nDebit: " << nDebit << endl;
     cout << "               nFee: " << nFee << endl;
     cout << "               ========================================" << endl;
