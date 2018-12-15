@@ -555,10 +555,25 @@ int64_t GetAccountBalance(CWalletDB& walletdb, const string& strAccount, int nMi
         int64_t nReceived, nSent, nFee;
         wtx.GetAccountAmounts(strAccount, nReceived, nSent, nFee);
 
+        cout << "====== GetAccountBalance ===========" << endl;
+        cout << "nReceived: " << nReceived << endl;
+        cout << "nSent: " << nSent << endl;
+        cout << "nFee: " << nFee << endl;
+        cout << "====================================" << endl;
+
         if (nReceived != 0 && wtx.GetDepthInMainChain() >= nMinDepth && wtx.GetBlocksToMaturity() == 0)
+        {
+            cout << "GetDepthInMainChain: " << wtx.GetDepthInMainChain() << endl;
+            cout << "GetBlocksToMaturity: " << wtx.GetBlocksToMaturity() << endl;
             nBalance += nReceived;
+        }
         nBalance -= nSent + nFee;
     }
+
+    cout << "====== Almost final balance ===========" << endl;
+    cout << "nBalance: " << nBalance << endl;
+    cout << "GetAccountCreditDebit: " << walletdb.GetAccountCreditDebit(strAccount) << endl;
+    cout << "=======================================" << endl;
 
     // Tally internal accounting entries
     nBalance += walletdb.GetAccountCreditDebit(strAccount);
