@@ -779,7 +779,7 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
     {
         cout << "                   ====== CWalletTx::GetAmounts ===========" << endl;
         cout << "                   IsCoinBase or IsCoinStake" << endl;
-        cout << "                   pwallet->GetCredit(): " << pwallet->GetCredit() << endl;
+        cout << "                   pwallet->GetCredit(): " << CWallet::GetCredit(*this); << endl;
         cout << "                   ========================================" << endl;
     }
 
