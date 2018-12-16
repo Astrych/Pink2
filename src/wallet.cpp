@@ -815,7 +815,7 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         //   2) the output is to us (received)
         cout << "                   fIsMine: " << pwallet->IsMine(txout) << endl;
         CTxDestination temp_address;
-        ExtractDestination(txout.scriptPubKey, temp_address)
+        ExtractDestination(txout.scriptPubKey, temp_address);
         cout << "                   txout.nValue, address: " << txout.nValue << temp_address << endl;
         if (nDebit > 0)
         {
