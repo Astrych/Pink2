@@ -844,10 +844,16 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
             listReceived.push_back(make_pair(address, txout.nValue));
     }
     cout << "                   listSent:" << " ";
-    for (auto i = listSent.begin(); i != listSent.end(); ++i) cout << *i <<  " ";
+    BOOST_FOREACH(const PAIRTYPE(CTxDestination, int64_t)& r, listSent)
+    {
+        cout << "(" << r.first << r.second << ")" <<  ", ";
+    }
     cout << endl;
     cout << "                   listReceived:" << " ";
-    for (auto i = listReceived.begin(); i != listReceived.end(); ++i) cout << *i <<  " ";
+    BOOST_FOREACH(const PAIRTYPE(CTxDestination, int64_t)& r, listReceived)
+    {
+        cout << "(" << r.first << r.second << ")" <<  ", ";
+    }
     cout << endl;
     cout << "                   ========================================" << endl;
 }
