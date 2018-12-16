@@ -816,7 +816,7 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         cout << "                   fIsMine: " << pwallet->IsMine(txout) << endl;
         CTxDestination temp_address;
         ExtractDestination(txout.scriptPubKey, temp_address);
-        cout << "                   txout.nValue, address: " << txout.nValue << temp_address << endl;
+        cout << "                   txout.nValue, address: " << txout.nValue << CBitcoinAddress(temp_address).ToString() << endl;
         if (nDebit > 0)
         {
             cout << "                   IsChange: " << pwallet->IsChange(txout) << endl;
