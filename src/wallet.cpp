@@ -782,7 +782,6 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         cout << "                   ----------------------------------------" << endl;
     }
 
-    cout << "                   ------ CWalletTx::GetAmounts -----------" << endl;
     // Compute fee:
     int64_t nDebit = GetDebit();
     if (nDebit > 0) // debit>0 means we signed/sent this transaction
@@ -815,6 +814,9 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         //   1) they debit from us (sent)
         //   2) the output is to us (received)
         cout << "                   fIsMine: " << pwallet->IsMine(txout) << endl;
+        CTxDestination temp_address;
+        ExtractDestination(txout.scriptPubKey, temp_address)
+        cout << "                   txout.nValue, address: " << txout.nValue << temp_address << endl;
         if (nDebit > 0)
         {
             cout << "                   IsChange: " << pwallet->IsChange(txout) << endl;

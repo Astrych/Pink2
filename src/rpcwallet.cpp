@@ -557,20 +557,20 @@ int64_t GetAccountBalance(CWalletDB& walletdb, const string& strAccount, int nMi
         wtx.GetAccountAmounts(strAccount, nReceived, nSent, nFee);
 
         cout << "------- after execution of GetAccountAmounts -------" << endl;
-        cout << "------- nReceived: " << nReceived << endl;
-        cout << "------- nSent: " << nSent << endl;
-        cout << "------- nFee: " << nFee << endl;
+        cout << "        nReceived: " << nReceived << endl;
+        cout << "        nSent: " << nSent << endl;
+        cout << "        nFee: " << nFee << endl;
         cout << "----------------------------------------------------" << endl;
 
         if (nReceived != 0 && wtx.GetDepthInMainChain() >= nMinDepth && wtx.GetBlocksToMaturity() == 0)
         {
             cout << "------- Add nReceived ------------------------------" << endl;
             nBalance += nReceived;
-            cout << "------- after nBalance += nReceived: " << nBalance << endl;
+            cout << "        after nBalance += nReceived: " << nBalance << endl;
             cout << "----------------------------------------------------" << endl;
         }
         nBalance -= nSent + nFee;
-        cout << "------- after nBalance -= nSent + nFee: " << nBalance << endl;
+        cout << "        after nBalance -= nSent + nFee: " << nBalance << endl;
         cout << "=======================================================================" << endl;
     }
 
