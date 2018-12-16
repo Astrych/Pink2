@@ -843,18 +843,6 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         if (fIsMine)
             listReceived.push_back(make_pair(address, txout.nValue));
     }
-    cout << "                   listSent:" << " ";
-    BOOST_FOREACH(const PAIRTYPE(CTxDestination, int64_t)& r, listSent)
-    {
-        cout << "(" << r.first << r.second << ")" <<  ", ";
-    }
-    cout << endl;
-    cout << "                   listReceived:" << " ";
-    BOOST_FOREACH(const PAIRTYPE(CTxDestination, int64_t)& r, listReceived)
-    {
-        cout << "(" << r.first << r.second << ")" <<  ", ";
-    }
-    cout << endl;
     cout << "                   ========================================" << endl;
 }
 
