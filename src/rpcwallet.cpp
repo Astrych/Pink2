@@ -548,6 +548,7 @@ int64_t GetAccountBalance(CWalletDB& walletdb, const string& strAccount, int nMi
     // Tally wallet transactions
     for (map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end(); ++it)
     {
+        cout << "====== GetAccountBalance loop =========================================" << endl;
         const CWalletTx& wtx = (*it).second;
         if (!wtx.IsFinal() || wtx.GetDepthInMainChain() < 0)
             continue;
@@ -555,27 +556,29 @@ int64_t GetAccountBalance(CWalletDB& walletdb, const string& strAccount, int nMi
         int64_t nReceived, nSent, nFee;
         wtx.GetAccountAmounts(strAccount, nReceived, nSent, nFee);
 
-        cout << "====== GetAccountBalance ===========" << endl;
-        cout << "nReceived: " << nReceived << endl;
-        cout << "nSent: " << nSent << endl;
-        cout << "nFee: " << nFee << endl;
-        cout << "====================================" << endl;
+        cout << "------- after execution of GetAccountAmounts -------" << endl;
+        cout << "------- nReceived: " << nReceived << endl;
+        cout << "------- nSent: " << nSent << endl;
+        cout << "------- nFee: " << nFee << endl;
+        cout << "----------------------------------------------------" << endl;
 
         if (nReceived != 0 && wtx.GetDepthInMainChain() >= nMinDepth && wtx.GetBlocksToMaturity() == 0)
         {
+            cout << "------- Add nReceived ------------------------------" << endl;
             cout << "------- GetDepthInMainChain: " << wtx.GetDepthInMainChain() << endl;
             cout << "------- GetBlocksToMaturity: " << wtx.GetBlocksToMaturity() << endl;
             nBalance += nReceived;
             cout << "------- after nBalance += nReceived: " << nBalance << endl;
+            cout << "----------------------------------------------------" << endl;
         }
         nBalance -= nSent + nFee;
         cout << "------- after nBalance -= nSent + nFee: " << nBalance << endl;
+        cout << "=======================================================================" << endl;
     }
 
-    cout << "====== Almost final balance ===========" << endl;
+    cout << "====== Final: nBalance + GetAccountCreditDebit ========================" << endl;
     cout << "nBalance: " << nBalance << endl;
     cout << "GetAccountCreditDebit: " << walletdb.GetAccountCreditDebit(strAccount) << endl;
-    cout << "=======================================" << endl;
 
     // Tally internal accounting entries
     nBalance += walletdb.GetAccountCreditDebit(strAccount);

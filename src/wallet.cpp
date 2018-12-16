@@ -775,25 +775,26 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
     listSent.clear();
     strSentAccount = strFromAccount;
 
+    cout << "                   ====== CWalletTx::GetAmounts ===========" << endl;
     if (IsCoinBase() || IsCoinStake())
     {
-        cout << "                   ====== CWalletTx::GetAmounts ===========" << endl;
         cout << "                   IsCoinBase or IsCoinStake" << endl;
-        cout << "                   ========================================" << endl;
+        cout << "                   ----------------------------------------" << endl;
     }
 
-    cout << "               ====== CWalletTx::GetAmounts ===========" << endl;
+    cout << "                   ------ CWalletTx::GetAmounts -----------" << endl;
     // Compute fee:
     int64_t nDebit = GetDebit();
     if (nDebit > 0) // debit>0 means we signed/sent this transaction
     {
         int64_t nValueOut = GetValueOut();
         cout << "                   nValueOut: " << nValueOut << endl;
+        // [FIX]: To nie jest poprawne! nValueOut to przy stake'owaniu input + minted coins. nDebit to input.
+        // Czyli nFee to tak naprawdę liczba wystake'owanych monet :/
         nFee = nDebit - nValueOut;
     }
-    cout << "               nDebit: " << nDebit << endl;
-    cout << "               nFee: " << nFee << endl;
-    cout << "               ========================================" << endl;
+    cout << "                   nDebit: " << nDebit << endl;
+    cout << "                   nFee: " << nFee << endl;
 
     // Sent/received.
     BOOST_FOREACH(const CTxOut& txout, vout)
@@ -813,8 +814,10 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         // Only need to handle txouts if AT LEAST one of these is true:
         //   1) they debit from us (sent)
         //   2) the output is to us (received)
+        cout << "                   fIsMine: " << fIsMine << endl;
         if (nDebit > 0)
         {
+            cout << "                   IsChange: " << pwallet->IsChange(txout) << endl;
             // Don't report 'change' txouts
             if (pwallet->IsChange(txout))
                 continue;
@@ -840,7 +843,9 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         if (fIsMine)
             listReceived.push_back(make_pair(address, txout.nValue));
     }
-
+    cout << "                   listSent:" << listSent << endl;
+    cout << "                   listReceived:" << listReceived << endl;
+    cout << "                   ========================================" << endl;
 }
 
 void CWalletTx::GetAccountAmounts(const string& strAccount, int64_t& nReceived,
