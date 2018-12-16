@@ -814,7 +814,7 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         // Only need to handle txouts if AT LEAST one of these is true:
         //   1) they debit from us (sent)
         //   2) the output is to us (received)
-        cout << "                   fIsMine: " << fIsMine << endl;
+        cout << "                   fIsMine: " << pwallet->IsMine(txout) << endl;
         if (nDebit > 0)
         {
             cout << "                   IsChange: " << pwallet->IsChange(txout) << endl;
