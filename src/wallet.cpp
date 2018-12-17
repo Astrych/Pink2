@@ -874,10 +874,18 @@ void CWalletTx::GetAccountAmounts(const string& strAccount, int64_t& nReceived,
                 map<CTxDestination, string>::const_iterator mi = pwallet->mapAddressBook.find(r.first);
                 if (mi != pwallet->mapAddressBook.end() && (*mi).second == strAccount)
                     nReceived += r.second;
+                cout << "                   strAccount:" << strAccount << endl;
+                cout << "                   strSentAccount:" << strSentAccount << endl;
+                cout << "                   (*mi).second:" << (*mi).second << endl;
+                cout << "                   ----------------------------------------" << endl;
             }
             else if (strAccount.empty())
             {
                 nReceived += r.second;
+                cout << "                   strAccount:" << strAccount << endl;
+                cout << "                   strSentAccount:" << strSentAccount << endl;
+                cout << "                   r.second:" << r.second << endl;
+                cout << "                   ----------------------------------------" << endl;
             }
         }
     }
