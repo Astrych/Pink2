@@ -3588,7 +3588,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // the getaddr message mitigates the attack.
         if (!pfrom->fInbound)
         {
-            printf("Ignoring \"getaddr\" from outbound connection. peer=%d\n", pfrom->id);
+            printf("Ignoring \"getaddr\" from outbound connection. peer=%s\n", pfrom->addr.ToString().c_str());
             return true;
         }
         // Don't return addresses older than nCutOff timestamp
