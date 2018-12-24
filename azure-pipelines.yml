@@ -233,7 +233,7 @@ jobs:
 
 - job: init_windows
   pool:
-    vmImage: 'Ubuntu 18.04'
+    vmImage: 'Ubuntu 16.04'
   condition: and(ne(variables['Agent.JobStatus'], 'Canceled'), ne(variables['Agent.JobStatus'], 'Failed'))
   steps:
   - bash: |
@@ -337,7 +337,7 @@ jobs:
 
 - job: build_pinkcoin_binaries_for_windows
   pool:
-    vmImage: 'Ubuntu 18.04'
+    vmImage: 'Ubuntu 16.04'
   dependsOn:
     - init_windows
     - build_windows_toolkit_1
