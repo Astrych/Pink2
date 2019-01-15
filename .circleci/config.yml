@@ -121,12 +121,12 @@ jobs:
             wget 'https://download.qt.io/archive/qt/5.7/5.7.1/submodules/qtbase-opensource-src-5.7.1.tar.xz'
             wget 'https://download.qt.io/archive/qt/5.7/5.7.1/submodules/qttools-opensource-src-5.7.1.tar.xz'
             wget 'https://download.qt.io/archive/qt/5.7/5.7.1/submodules/qttranslations-opensource-src-5.7.1.tar.xz'
-            echo 'edcdf549d94d98aff08e201dcb3ca25bc3628a37b1309e320d5f556b6b66557e qtbase-opensource-src-5.7.1.7z' | sha256sum -c
-            echo '64197022686c3d8b11a8639f102e2caf03cc325a30e7a32ba66881648ac2dfac qttools-opensource-src-5.7.1.7z' | sha256sum -c
-            echo '16ecdb09532724e80fa6202e5604d80877923b652b771b6020cea36bee0258e7 qttranslations-opensource-src-5.7.1.7z' | sha256sum -c
-            7z x qtbase-opensource-src-5.7.1.7z
-            7z x qttools-opensource-src-5.7.1.7z
-            7z x qttranslations-opensource-src-5.7.1.7z
+            echo 'edcdf549d94d98aff08e201dcb3ca25bc3628a37b1309e320d5f556b6b66557e qtbase-opensource-src-5.7.1.tar.xz' | sha256sum -c
+            echo '64197022686c3d8b11a8639f102e2caf03cc325a30e7a32ba66881648ac2dfac qttools-opensource-src-5.7.1.tar.xz' | sha256sum -c
+            echo '16ecdb09532724e80fa6202e5604d80877923b652b771b6020cea36bee0258e7 qttranslations-opensource-src-5.7.1.tar.xz' | sha256sum -c
+            tar xf qtbase-opensource-src-5.7.1.tar.xz
+            tar xf qttools-opensource-src-5.7.1.tar.xz
+            tar xf qttranslations-opensource-src-5.7.1.tar.xz
             cd qtbase-opensource-src-5.7.1/
             ./configure -xplatform win32-g++ -device-option CROSS_COMPILE=x86_64-w64-mingw32- -nomake examples \
             -release -c++std c++11 -confirm-license -dbus-runtime -no-alsa -prefix /usr/x86_64-w64-mingw32 \
