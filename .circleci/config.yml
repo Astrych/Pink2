@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: /Pink2
     docker:
-      - image: ubuntu:trusty
+      - image: ubuntu:xenial
         environment:
           FROM_BUILD: "Astrych"
     steps:
