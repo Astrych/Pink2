@@ -1,6 +1,8 @@
 #ifndef ADDRESSBOOKPAGE_H
 #define ADDRESSBOOKPAGE_H
 
+#define QT_DISABLE_DEPRECATED_BEFORE 0
+
 #include <QDialog>
 
 namespace Ui {

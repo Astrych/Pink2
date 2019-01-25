@@ -1,7 +1,7 @@
-#include "transactiondescdialog.h"
-#include "ui_transactiondescdialog.h"
+#include <qt/transactiondescdialog.h>
+#include <qt/forms/ui_transactiondescdialog.h>
 
-#include "transactiontablemodel.h"
+#include <qt/transactiontablemodel.h>
 
 #include <QModelIndex>
 

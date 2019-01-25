@@ -1,12 +1,12 @@
-#include "sendcoinsentry.h"
-#include "ui_sendcoinsentry.h"
-#include "guiutil.h"
-#include "bitcoinunits.h"
-#include "addressbookpage.h"
-#include "walletmodel.h"
-#include "optionsmodel.h"
-#include "addresstablemodel.h"
-#include "stealth.h"
+#include <qt/sendcoinsentry.h>
+#include <qt/forms/ui_sendcoinsentry.h>
+#include <qt/guiutil.h>
+#include <qt/bitcoinunits.h>
+#include <qt/addressbookpage.h>
+#include <qt/walletmodel.h>
+#include <qt/optionsmodel.h>
+#include <qt/addresstablemodel.h>
+#include <stealth.h>
 
 #include <QApplication>
 #include <QClipboard>

@@ -1,5 +1,5 @@
-#include "coincontroltreewidget.h"
-#include "coincontroldialog.h"
+#include <qt/coincontroltreewidget.h>
+#include <qt/coincontroldialog.h>
 
 CoinControlTreeWidget::CoinControlTreeWidget(QWidget *parent) :
     QTreeWidget(parent)

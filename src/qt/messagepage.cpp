@@ -1,12 +1,14 @@
-#include "messagepage.h"
-#include "ui_messagepage.h"
+#define QT_DISABLE_DEPRECATED_BEFORE 0
 
-#include "sendmessagesdialog.h"
-#include "mrichtextedit.h"
-#include "messagemodel.h"
-#include "bitcoingui.h"
-#include "csvmodelwriter.h"
-#include "guiutil.h"
+#include <qt/messagepage.h>
+#include <qt/forms/ui_messagepage.h>
+
+#include <qt/sendmessagesdialog.h>
+#include <qt/plugins/mrichtexteditor/mrichtextedit.h>
+#include <qt/messagemodel.h>
+#include <qt/bitcoingui.h>
+#include <qt/csvmodelwriter.h>
+#include <qt/guiutil.h>
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>

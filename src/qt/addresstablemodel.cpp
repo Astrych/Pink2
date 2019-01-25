@@ -1,11 +1,11 @@
-#include "addresstablemodel.h"
-#include "guiutil.h"
-#include "walletmodel.h"
+#include <qt/addresstablemodel.h>
+#include <qt/guiutil.h>
+#include <qt/walletmodel.h>
 
-#include "wallet.h"
-#include "base58.h"
-#include "stealth.h"
-#include "smessage.h"
+#include <wallet.h>
+#include <base58.h>
+#include <stealth.h>
+#include <smessage.h>
 
 #include <QFont>
 #include <QColor>

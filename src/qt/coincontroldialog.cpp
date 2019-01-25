@@ -1,13 +1,13 @@
-#include "coincontroldialog.h"
-#include "ui_coincontroldialog.h"
+#include <qt/coincontroldialog.h>
+#include <qt/forms/ui_coincontroldialog.h>
 
-#include "init.h"
-#include "bitcoinunits.h"
-#include "walletmodel.h"
-#include "addresstablemodel.h"
-#include "optionsmodel.h"
-#include "coincontrol.h"
-#include "bitcoinrpc.h"
+#include <init.h>
+#include <qt/bitcoinunits.h>
+#include <qt/walletmodel.h>
+#include <qt/addresstablemodel.h>
+#include <qt/optionsmodel.h>
+#include <coincontrol.h>
+#include <bitcoinrpc.h>
 
 #include <QApplication>
 #include <QCheckBox>

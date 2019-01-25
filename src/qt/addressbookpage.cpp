@@ -1,12 +1,12 @@
-#include "addressbookpage.h"
-#include "ui_addressbookpage.h"
+#include <qt/addressbookpage.h>
+#include <qt/forms/ui_addressbookpage.h>
 
-#include "addresstablemodel.h"
-#include "optionsmodel.h"
-#include "bitcoingui.h"
-#include "editaddressdialog.h"
-#include "csvmodelwriter.h"
-#include "guiutil.h"
+#include <qt/addresstablemodel.h>
+#include <qt/optionsmodel.h>
+#include <qt/bitcoingui.h>
+#include <qt/editaddressdialog.h>
+#include <qt/csvmodelwriter.h>
+#include <qt/guiutil.h>
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>

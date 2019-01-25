@@ -1,6 +1,6 @@
-#include "aboutdialog.h"
-#include "ui_aboutdialog.h"
-#include "clientmodel.h"
+#include <qt/aboutdialog.h>
+#include <qt/forms/ui_aboutdialog.h>
+#include <qt/clientmodel.h>
 
 #include "version.h"
 

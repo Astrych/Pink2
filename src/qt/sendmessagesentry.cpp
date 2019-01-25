@@ -1,13 +1,13 @@
-#include "sendmessagesentry.h"
-#include "ui_sendmessagesentry.h"
-#include "guiutil.h"
-#include "addressbookpage.h"
-#include "walletmodel.h"
-#include "messagemodel.h"
-#include "optionsmodel.h"
-#include "addresstablemodel.h"
+#include <qt/sendmessagesentry.h>
+#include <qt/forms/ui_sendmessagesentry.h>
+#include <qt/guiutil.h>
+#include <qt/addressbookpage.h>
+#include <qt/walletmodel.h>
+#include <qt/messagemodel.h>
+#include <qt/optionsmodel.h>
+#include <qt/addresstablemodel.h>
 
-#include "smessage.h"
+#include <smessage.h>
 
 #include <QApplication>
 #include <QClipboard>

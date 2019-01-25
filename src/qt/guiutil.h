@@ -1,6 +1,8 @@
 #ifndef GUIUTIL_H
 #define GUIUTIL_H
 
+#define QT_DISABLE_DEPRECATED_BEFORE 0
+
 #include <QString>
 #include <QObject>
 #include <QMessageBox>

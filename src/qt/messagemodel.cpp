@@ -1,14 +1,14 @@
-#include "guiutil.h"
-#include "guiconstants.h"
-#include "bitcoinunits.h"
-#include "optionsmodel.h"
-#include "walletmodel.h"
-#include "messagemodel.h"
-#include "addresstablemodel.h"
+#include <qt/guiutil.h>
+#include <qt/guiconstants.h>
+#include <qt/bitcoinunits.h>
+#include <qt/optionsmodel.h>
+#include <qt/walletmodel.h>
+#include <qt/messagemodel.h>
+#include <qt/addresstablemodel.h>
 
-#include "ui_interface.h"
-#include "base58.h"
-#include "json_spirit.h"
+#include <ui_interface.h>
+#include <base58.h>
+#include <json/json_spirit.h>
 
 #include <QSet>
 #include <QTimer>

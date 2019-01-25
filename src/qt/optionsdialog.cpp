@@ -1,10 +1,10 @@
-#include "optionsdialog.h"
-#include "ui_optionsdialog.h"
+#include <qt/optionsdialog.h>
+#include <qt/forms/ui_optionsdialog.h>
 
-#include "bitcoinunits.h"
-#include "monitoreddatamapper.h"
-#include "netbase.h"
-#include "optionsmodel.h"
+#include <qt/bitcoinunits.h>
+#include <qt/monitoreddatamapper.h>
+#include <netbase.h>
+#include <qt/optionsmodel.h>
 
 #include <QDir>
 #include <QIntValidator>

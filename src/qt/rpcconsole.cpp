@@ -1,9 +1,9 @@
-#include "rpcconsole.h"
-#include "ui_rpcconsole.h"
+#include <qt/rpcconsole.h>
+#include <qt/forms/ui_rpcconsole.h>
 
-#include "clientmodel.h"
-#include "bitcoinrpc.h"
-#include "guiutil.h"
+#include <qt/clientmodel.h>
+#include <bitcoinrpc.h>
+#include <qt/guiutil.h>
 
 #include <QTime>
 #include <QTimer>

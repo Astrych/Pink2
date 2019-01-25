@@ -1,7 +1,7 @@
-#include "editaddressdialog.h"
-#include "ui_editaddressdialog.h"
-#include "addresstablemodel.h"
-#include "guiutil.h"
+#include <qt/editaddressdialog.h>
+#include <qt/forms/ui_editaddressdialog.h>
+#include <qt/addresstablemodel.h>
+#include <qt/guiutil.h>
 
 #include <QDataWidgetMapper>
 #include <QMessageBox>

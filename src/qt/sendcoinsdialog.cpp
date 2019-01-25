@@ -1,20 +1,19 @@
-#include "sendcoinsdialog.h"
-#include "ui_sendcoinsdialog.h"
+#include <qt/sendcoinsdialog.h>
+#include <qt/forms/ui_sendcoinsdialog.h>
 
-#include "init.h"
-#include "walletmodel.h"
-#include "addresstablemodel.h"
-#include "addressbookpage.h"
+#include <init.h>
+#include <qt/walletmodel.h>
+#include <qt/addresstablemodel.h>
+#include <qt/addressbookpage.h>
 
-#include "bitcoinunits.h"
-#include "addressbookpage.h"
-#include "optionsmodel.h"
-#include "sendcoinsentry.h"
-#include "guiutil.h"
-#include "askpassphrasedialog.h"
+#include <qt/bitcoinunits.h>
+#include <qt/optionsmodel.h>
+#include <qt/sendcoinsentry.h>
+#include <qt/guiutil.h>
+#include <qt/askpassphrasedialog.h>
 
-#include "coincontrol.h"
-#include "coincontroldialog.h"
+#include <coincontrol.h>
+#include <qt/coincontroldialog.h>
 
 #include <QMessageBox>
 #include <QLocale>

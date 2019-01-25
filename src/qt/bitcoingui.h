@@ -1,6 +1,8 @@
 #ifndef BITCOINGUI_H
 #define BITCOINGUI_H
 
+#define QT_DISABLE_DEPRECATED_BEFORE 0
+
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 #include <QLabel>

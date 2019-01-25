@@ -1,14 +1,16 @@
-#include "overviewpage.h"
-#include "ui_overviewpage.h"
+#define QT_DISABLE_DEPRECATED_BEFORE 0
 
-#include "../main.h"
-#include "walletmodel.h"
-#include "bitcoinunits.h"
-#include "optionsmodel.h"
-#include "transactiontablemodel.h"
-#include "transactionfilterproxy.h"
-#include "guiutil.h"
-#include "guiconstants.h"
+#include <qt/overviewpage.h>
+#include <qt/forms/ui_overviewpage.h>
+
+#include <main.h>
+#include <qt/walletmodel.h>
+#include <qt/bitcoinunits.h>
+#include <qt/optionsmodel.h>
+#include <qt/transactiontablemodel.h>
+#include <qt/transactionfilterproxy.h>
+#include <qt/guiutil.h>
+#include <qt/guiconstants.h>
 
 #include <QAbstractItemDelegate>
 #include <QPainter>

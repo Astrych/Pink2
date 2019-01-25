@@ -1,14 +1,14 @@
-#include "signverifymessagedialog.h"
-#include "ui_signverifymessagedialog.h"
+#include <qt/signverifymessagedialog.h>
+#include <qt/forms/ui_signverifymessagedialog.h>
 
-#include "addressbookpage.h"
-#include "base58.h"
-#include "guiutil.h"
-#include "init.h"
-#include "main.h"
-#include "optionsmodel.h"
-#include "walletmodel.h"
-#include "wallet.h"
+#include <qt/addressbookpage.h>
+#include <base58.h>
+#include <qt/guiutil.h>
+#include <init.h>
+#include <main.h>
+#include <qt/optionsmodel.h>
+#include <qt/walletmodel.h>
+#include <wallet.h>
 
 #include <string>
 #include <vector>

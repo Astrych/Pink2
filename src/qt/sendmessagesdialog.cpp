@@ -1,11 +1,13 @@
-#include "sendmessagesdialog.h"
-#include "ui_sendmessagesdialog.h"
+#define QT_DISABLE_DEPRECATED_BEFORE 0
+
+#include <qt/sendmessagesdialog.h>
+#include <qt/forms/ui_sendmessagesdialog.h>
 //#include "init.h"
-#include "walletmodel.h"
-#include "messagemodel.h"
-#include "addressbookpage.h"
-#include "optionsmodel.h"
-#include "sendmessagesentry.h"
+#include <qt/walletmodel.h>
+#include <qt/messagemodel.h>
+#include <qt/addressbookpage.h>
+#include <qt/optionsmodel.h>
+#include <qt/sendmessagesentry.h>
 //#include "guiutil.h"
 
 #include <QMessageBox>
