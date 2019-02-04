@@ -7,6 +7,7 @@
 #include "stealth.h"
 #include "smessage.h"
 
+#include <algorithm>
 #include <QFont>
 #include <QColor>
 
@@ -49,6 +50,9 @@ struct AddressTableEntryLessThan
         return a < b.address;
     }
 };
+
+#pragma GCC push_options
+#pragma GCC optimize ("O0")
 
 // Private implementation
 class AddressTablePriv
@@ -113,6 +117,7 @@ public:
                                   true));
             };
         }
+
         // qLowerBound() and qUpperBound() require our cachedAddressTable list to be sorted in asc order
         qSort(cachedAddressTable.begin(), cachedAddressTable.end(), AddressTableEntryLessThan());
     }
@@ -120,12 +125,39 @@ public:
     void updateEntry(const QString &address, const QString &label, bool isMine, int status, const QString &percent)
     {
         // Find address / label in model
-        QList<AddressTableEntry>::iterator lower = qLowerBound(
-            cachedAddressTable.begin(), cachedAddressTable.end(), address, AddressTableEntryLessThan());
-        QList<AddressTableEntry>::iterator upper = qUpperBound(
-            cachedAddressTable.begin(), cachedAddressTable.end(), address, AddressTableEntryLessThan());
-        int lowerIndex = (lower - cachedAddressTable.begin());
-        int upperIndex = (upper - cachedAddressTable.begin());
+        QList<AddressTableEntry>::iterator lower = std::lower_bound(
+            cachedAddressTable.begin(), cachedAddressTable.end(), address, AddressTableEntryLessThan()
+        );
+        QList<AddressTableEntry>::iterator upper = std::upper_bound(
+            cachedAddressTable.begin(), cachedAddressTable.end(), address, AddressTableEntryLessThan()
+        );
+        QList<AddressTableEntry>::iterator beginning = cachedAddressTable.begin();
+        QList<AddressTableEntry>::iterator ending = cachedAddressTable.end();
+
+        const QString &labelTest1 = lower->label;
+        const QString &addressTest1 = lower->address;
+        std::cout << labelTest1.toStdString() << std::endl;
+        std::cout << addressTest1.toStdString() << std::endl;
+
+        const QString &labelTest2 = upper->label;
+        const QString &addressTest2 = upper->address;
+        std::cout << labelTest2.toStdString() << std::endl;
+        std::cout << addressTest2.toStdString() << std::endl;
+
+        const QString &labelTestBegin = beginning->label;
+        const QString &addressTestBegin = beginning->address;
+        std::cout << labelTestBegin.toStdString() << std::endl;
+        std::cout << addressTestBegin.toStdString() << std::endl;
+
+        const QString &labelTestEnd = (ending - 1)->label;
+        const QString &addressTestEnd = (ending - 1)->address;
+        std::cout << labelTestEnd.toStdString() << std::endl;
+        std::cout << addressTestEnd.toStdString() << std::endl;
+
+        int lowerIndex = (lower - beginning);
+        int upperIndex = (upper - beginning);
+        std::cout << "Lower index:" << lowerIndex << std::endl;
+        std::cout << "Upper index:" << upperIndex << std::endl;
         bool inModel = (lower != upper);
         bool isStake = (percent != "");
         AddressTableEntry::Type newEntryType = isStake ? AddressTableEntry::Staking : (isMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending);
@@ -180,6 +212,16 @@ public:
             parent->endRemoveRows();
             break;
         }
+
+        std::cout << "===================================================" << std::endl;
+        std::cout << "Size:" << cachedAddressTable.size() << std::endl;
+        for (int i = 0; i < cachedAddressTable.size(); ++i) {
+            std::cout << "===================================================" << std::endl;
+            std::cout << "Index:" << i << std::endl;
+            std::cout << "Label:" << cachedAddressTable.at(i).label.toStdString() << std::endl;
+            std::cout << "Address:" << cachedAddressTable.at(i).address.toStdString() << std::endl;
+        }
+        std::cout << "===================================================" << std::endl;
     }
 
     int size()
@@ -200,12 +242,15 @@ public:
     }
 };
 
+#pragma GCC pop_options
+
 AddressTableModel::AddressTableModel(CWallet *wallet, WalletModel *parent) :
     QAbstractTableModel(parent),walletModel(parent),wallet(wallet),priv(0)
 {
     columns << tr("Label") << tr("Address") << tr("PM Key") << tr("Percent");
     priv = new AddressTablePriv(wallet, this);
     priv->refreshAddressTable();
+    std::cout << "AFTER REFRESH" << std::endl;
 }
 
 void AddressTableModel::refreshAddresses()
