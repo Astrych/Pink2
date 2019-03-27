@@ -13,7 +13,7 @@ variables:
 
   windows.toolkit.name: 'Windows_toolkit'
   windows.build.name: 'Pinkcoin-windows'
-  windows.depsdir: '/usr/x86_64-w64-mingw32'
+  windows.depsdir: '/usr/x86_64-w64-mingw32/sysroot'
   windows.qt.prefix: '$(windows.depsdir)'
   windows.boost.prefix: '$(Build.BinariesDirectory)/$(windows.toolkit.name)/boost'
   windows.zlib.prefix: '$(Build.BinariesDirectory)/$(windows.toolkit.name)/zlib'
