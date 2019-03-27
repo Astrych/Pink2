@@ -28,6 +28,7 @@ variables:
 resources:
   containers:
   - container: docimg
+    # Uses custom image as there is no public Ubuntu based one with sudo preinstalled :/
     image: registry.gitlab.com/pinkcoin/docker-files:latest
 
 jobs:
