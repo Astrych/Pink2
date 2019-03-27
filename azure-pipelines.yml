@@ -27,8 +27,8 @@ variables:
 
 resources:
   containers:
-  - container: u14
-    image: ubuntu:trusty
+  - container: u18
+    image: ubuntu:bionic
 
 jobs:
 #===================================================================================================
