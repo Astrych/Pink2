@@ -27,9 +27,8 @@ variables:
 
 resources:
   containers:
-  - container: u18
-    image: ubuntu:18.04
-    options: --user 0
+  - container: buster
+    image: debian:buster
 
 jobs:
 #===================================================================================================
