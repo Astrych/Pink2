@@ -27,8 +27,8 @@ variables:
 
 resources:
   containers:
-  - container: buster
-    image: debian:buster
+  - container: docimg
+    image: gcc:7.4.0
 
 jobs:
 #===================================================================================================
