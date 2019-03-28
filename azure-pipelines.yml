@@ -352,7 +352,7 @@ jobs:
   pool:
     vmImage: 'Ubuntu 16.04'
     cancelTimeoutInMinutes: 1
-  container: 'u14'
+  container: 'docimg'
   dependsOn:
     - init_windows
     - build_windows_toolkit_1
