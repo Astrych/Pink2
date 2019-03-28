@@ -368,9 +368,8 @@ jobs:
 
   - bash: |
       sudo apt-get update
-      sudo apt-get install --no-install-recommends -y \
-      wget g++ ca-certificates pkg-config zip \
-      bash gettext git libtool make g++-mingw-w64-x86-64
+      sudo apt-get install --no-install-recommends -y zip gettext
+      sudo update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix
     displayName: 'Install Required System Libs'
 
   - bash: |
