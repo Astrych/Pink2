@@ -2,7 +2,7 @@ name: 'Pinkcoin - Build For All Platforms'
 
 variables:
   macos.toolkit.name: 'MacOS_toolkit'
-  macos.build.name: 'Pinkcoin-MacOS'
+  macos.build.name: 'Pinkcoin-Daemon-MacOS'
   macos.path: '/opt/local/libexec/qt5/bin:/opt/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/Users/vsts/bin:/Users/vsts/.yarn/bin:/usr/local/go/bin:/Users/vsts/Library/Android/sdk/tools:/Users/vsts/Library/Android/sdk/platform-tools:/Users/vsts/Library/Android/sdk/ndk-bundle:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/vsts/.azcopy'
 
   linux.toolkit.name: 'Linux_toolkit'
