@@ -203,7 +203,7 @@ jobs:
     job1: build_linux_toolkit_1
     job2: build_linux_toolkit_2
     job3: build_linux_toolkit_3
-    job3: build_linux_toolkit_4
+    job4: build_linux_toolkit_4
     condition: eq(dependencies.init_linux.outputs['check.toolkitExists'], 'false')
 
 # --------------------------------------------------------------------------------------------------
