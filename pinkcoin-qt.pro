@@ -7,6 +7,9 @@ CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += c++11
 
+message(qmake file in value = $$INCLUDEPATH)
+message($$QMAKE_DEFAULT_INCDIRS)
+
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets network
     DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
