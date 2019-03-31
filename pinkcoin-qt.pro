@@ -489,9 +489,6 @@ LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX -lboost_chrono$$BOOST_LIB_SUFFIX
 
-message(LIBS = $$LIBS)
-
-message(================================================================================)
 
 contains(RELEASE, 1) {
     !windows:!macx {
@@ -504,6 +501,12 @@ contains(RELEASE, 1) {
     DEFINES += LINUX
     LIBS += -lrt -ldl
 }
+
+message(DEFINES = $$DEFINES)
+message(INCLUDEPATH = $$INCLUDEPATH)
+message(LIBS = $$LIBS)
+
+message(================================================================================)
 
 themes.path = $$OUT_PWD/$$DESTDIR/themes
 macx:themes.path = $$OUT_PWD/$$DESTDIR/Pinkcoin-Qt.app/Contents/MacOS/themes
