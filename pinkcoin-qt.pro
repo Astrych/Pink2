@@ -51,7 +51,7 @@ macx {
 
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX = -mt-s
+    windows:BOOST_LIB_SUFFIX = -mgw49-mt-s-1_57
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
@@ -138,9 +138,6 @@ contains(RELEASE, 1) {
     # We need to exclude this for Windows cross compile with MinGW 4.2.x, as it will result in a non-working executable!
     # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
 }
-
-# Temporarily fix issue with too big main.o file
-Debug:win32:QMAKE_CXXFLAGS *= -Wa,-mbig-obj -O1
 
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
 win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
@@ -332,7 +329,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/sendmessagesdialog.h \
     src/qt/sendmessagesentry.h \
     src/qt/plugins/mrichtexteditor/mrichtextedit.h \
-    src/qt/qvalidatedtextedit.h
+    src/qt/qvalidatedtextedit.h \
+    src/ntp.h
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -411,7 +409,8 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/scrypt-x86_64.S \
     src/scrypt.cpp \
     src/pbkdf2.cpp \
-    src/stealth.cpp
+    src/stealth.cpp\
+    src/ntp.cpp
 
 RESOURCES += \
     src/qt/bitcoin.qrc 
@@ -483,8 +482,7 @@ LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 # -lgdi32 has to happen after -lcrypto (see  #681)
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
-LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
-windows:LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
+LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX -lboost_chrono$$BOOST_LIB_SUFFIX
 
 contains(RELEASE, 1) {
     !windows:!macx {
