@@ -157,7 +157,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         QToolBar QLabel { padding-top: 0px; padding-bottom: 0px; spacing: 0px; border: 0px; }
         QToolBar QLabel:item { padding-top: 0px; padding-bottom: 0px; spacing: 0px; border: 0px; }
 
-        #spacer2 { background: rgb(26, 0, 13); border: none; }
+        #spacer2 {
+            background: rgb(26, 0, 13);
+            border: none;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            margin-left: 2px;
+            margin-right: 4px;
+        }
         #spacer { background: rgb(152, 50, 101); border: none; }
         #toolbar2
         {
@@ -340,6 +347,12 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     labelConnectionsIcon = new QLabel();
     labelBlocksIcon = new QLabel();
 
+    labelConnectionsIcon->setStyleSheet(R"(
+        QLabel {
+            padding-right: 2px;
+        }
+    )");
+
     if (GetBoolArg("-staking", true))
     {
         QTimer *timerStakingIcon = new QTimer(labelStakingIcon);
@@ -363,6 +376,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
             border-radius: 4px;
             padding: 1px;
             text-align: center;
+            font-size: 14px;
+            font-family: Rubik;
         }
         QProgressBar::chunk {
             background: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5, stop: 0 rgb(116, 85, 195), stop: 1 rgb(172, 143, 238));
@@ -375,7 +390,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QToolBar *toolbar2 = addToolBar(tr("Tabs toolbar"));
     addToolBar(Qt::BottomToolBarArea,toolbar2);
     toolbar2->setOrientation(Qt::Horizontal);
-    toolbar2->setMovable( false );
+    toolbar2->setMovable(false);
     toolbar2->setObjectName("toolbar2");
     toolbar2->setFixedHeight(28);
     toolbar2->setIconSize(QSize(28,28));
@@ -389,7 +404,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
 
     progressBar->setFixedWidth(600);
-    progressBarLabel->setStyleSheet("QLabel { color: white; }");
+    progressBarLabel->setStyleSheet(R"(
+        QLabel {
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: Rubik;
+        }
+    )");
 
     frameSpacer2->addWidget(progressBarLabel);
     frameSpacer2->addWidget(progressBar);
@@ -404,7 +426,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     toolbar2->addWidget(labelStakingIcon);
     toolbar2->addWidget(labelConnectionsIcon);
 
-    syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
+    syncIconMovie = new QMovie(":/movies/update_spinner", "gif", this);
 
     // Clicking on a transaction on the overview page simply sends you to transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), this, SLOT(gotoHistoryPage()));
