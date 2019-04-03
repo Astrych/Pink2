@@ -29,6 +29,10 @@ for subpath in sys.argv[2:]:
                     ' ' + sys.argv[1] + '/' + lib,
                     new_content,
                 )
+                print("        :", lib)
+                print("        :", wrong_path)
+                print("        :", r'\s(\/' + wrong_path + '\.a)+')
+                print("        :", ' ' + sys.argv[1] + '/' + lib)
                 print("="*60)
                 print(new_content)
                 print("="*60)
