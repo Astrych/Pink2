@@ -75,6 +75,7 @@
 #include <QSettings>
 #include <QWidgetAction>
 #include <QToolButton>
+#include <QFontDatabase>
 
 #include <iostream>
 
@@ -241,6 +242,10 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
             padding-right: 5px;
             min-width: 150px;
         }
+        QMenu::item:disabled {
+            color: darkGrey;
+            background-color: DimGrey;
+        }
         QMenuBar { background: rgb(0, 0, 0); color: white; }
         QMenuBar::item
         {
@@ -252,7 +257,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
             color: white;
             background-color: transparent;
         }
-
         QMenuBar::item:selected {
             background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255, 101, 183), stop: 1 rgb(255, 101, 183));
         }
@@ -404,12 +408,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
 
     progressBar->setFixedWidth(600);
+    QFontDatabase fontData;
+    progressBarLabel->setFont(fontData.font("Rubik", "Medium", 10));
+
     progressBarLabel->setStyleSheet(R"(
         QLabel {
             color: white;
             font-size: 14px;
             font-weight: 400;
-            font-family: Rubik;
         }
     )");
 
@@ -538,46 +544,55 @@ void BitcoinGUI::createActions()
     iMessage->addFile(":/icons/message_s", QSize(), QIcon::Active, QIcon::Off);
     iMessage->addFile(":/icons/message_s", QSize(), QIcon::Active, QIcon::On);
 
+    QFontDatabase fontData;
+
     overviewAction = new QAction(*iOverView, tr("&Overview"), this);
     overviewAction->setToolTip(tr("Show general overview of wallet"));
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
+    overviewAction->setFont(fontData.font("Rubik", "Regular", 10));
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(*iSend, tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a Pinkcoin address"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
+    sendCoinsAction->setFont(fontData.font("Rubik", "Regular", 10));
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(*iReceive, tr("&Receive coins"), this);
     receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving payments"));
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
+    receiveCoinsAction->setFont(fontData.font("Rubik", "Regular", 10));
     tabGroup->addAction(receiveCoinsAction);
 
     addressBookAction = new QAction(*iAddressBook, tr("&Address Book"), this);
     addressBookAction->setToolTip(tr("Edit the list of stored addresses and labels"));
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
+    addressBookAction->setFont(fontData.font("Rubik", "Regular", 10));
     tabGroup->addAction(addressBookAction);
 
     stakeCoinsAction = new QAction(*iSideStake, tr("&Side Stakes"), this);
     stakeCoinsAction->setToolTip(tr("Edit the list of addresses for staking out."));
     stakeCoinsAction->setCheckable(true);
     stakeCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    stakeCoinsAction->setFont(fontData.font("Rubik", "Regular", 10));
     tabGroup->addAction(stakeCoinsAction);
 
     historyAction = new QAction(*iHistory, tr("&Transactions"), this);
     historyAction->setToolTip(tr("Browse transaction history"));
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    historyAction->setFont(fontData.font("Rubik", "Regular", 10));
     tabGroup->addAction(historyAction);
 
     messageAction = new QAction(*iMessage, tr("&Messages"), this);
     messageAction->setToolTip(tr("View and Send Private Messages"));
     messageAction->setCheckable(true);
     messageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
+    messageAction->setFont(fontData.font("Rubik", "Regular", 10));
     tabGroup->addAction(messageAction);
 
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));

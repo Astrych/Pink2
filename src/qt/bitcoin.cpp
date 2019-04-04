@@ -156,11 +156,7 @@ int main(int argc, char *argv[])
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
 
-    // // Enable anti-aliasing for all fonts.
-    // QFont f = QApplication::font();
-    // f.setStyleStrategy(QFont::PreferAntialias);
-    // QApplication::setFont(f);
-
+    // Set common app style for all platforms.
     app.setStyle(QStyleFactory::create("Fusion"));
 
     // Application identification (must be set before OptionsModel is initialized,
