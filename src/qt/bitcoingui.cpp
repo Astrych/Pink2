@@ -160,9 +160,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         #spacer2 {
             background: rgb(26, 0, 13);
             border: none;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            margin-left: 2px;
+            margin-top: 1px;
+            margin-bottom: 1px;
+            margin-left: 1px;
             margin-right: 4px;
         }
         #spacer { background: rgb(152, 50, 101); border: none; }
@@ -392,8 +392,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     toolbar2->setOrientation(Qt::Horizontal);
     toolbar2->setMovable(false);
     toolbar2->setObjectName("toolbar2");
-    // toolbar2->setFixedHeight(28);
-    // toolbar2->setIconSize(QSize(28,28));
+    toolbar2->setFixedHeight(28);
+    toolbar2->setIconSize(QSize(28,28));
     QFrame* spacer2 = new QFrame();
     spacer2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -413,18 +413,18 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         }
     )");
 
-    // frameSpacer2->addWidget(progressBarLabel);
-    // frameSpacer2->addWidget(progressBar);
+    frameSpacer2->addWidget(progressBarLabel);
+    frameSpacer2->addWidget(progressBar);
     frameSpacer2->addStretch();
 
 
-    // toolbar2->addWidget(spacer2);
+    toolbar2->addWidget(spacer2);
     spacer2->setObjectName("spacer2");
 
-    // toolbar2->addWidget(labelBlocksIcon);
-    // toolbar2->addWidget(labelEncryptionIcon);
-    // toolbar2->addWidget(labelStakingIcon);
-    // toolbar2->addWidget(labelConnectionsIcon);
+    toolbar2->addWidget(labelBlocksIcon);
+    toolbar2->addWidget(labelEncryptionIcon);
+    toolbar2->addWidget(labelStakingIcon);
+    toolbar2->addWidget(labelConnectionsIcon);
 
     syncIconMovie = new QMovie(":/movies/update_spinner", "gif", this);
 

@@ -15,6 +15,7 @@
 #include "qtipcserver.h"
 
 #include <QApplication>
+#include <QStyleFactory>
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QLocale>
@@ -155,10 +156,12 @@ int main(int argc, char *argv[])
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
 
-    // Enable anti-aliasing for all fonts.
-    QFont f = QApplication::font();
-    f.setStyleStrategy(QFont::PreferAntialias);
-    QApplication::setFont(f);
+    // // Enable anti-aliasing for all fonts.
+    // QFont f = QApplication::font();
+    // f.setStyleStrategy(QFont::PreferAntialias);
+    // QApplication::setFont(f);
+
+    app.setStyle(QStyleFactory::create("Fusion"));
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
