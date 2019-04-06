@@ -227,7 +227,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
             color: white;
             background-color: transparent;
             border: 0px;
-            padding-left: 30pt;
             padding-top: 5px;
             padding-bottom: 5px;
             padding-right: 5px;
@@ -236,7 +235,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         QMenu::item:selected {
             background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(255, 101, 183), stop: 1 rgb(255, 101, 183));
             border: 0px;
-            padding-left: 30pt;
             padding-top: 5px;
             padding-bottom: 5px;
             padding-right: 5px;
