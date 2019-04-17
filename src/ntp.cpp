@@ -200,6 +200,8 @@ void *threadGetNTPTime(int nServer, const string strPool, uint64_t startMicros)
 
         // Subtract how long it took our thread to get the time.
         myTime -= (nowMicros - startMicros);
+
+        printf("DEBUG NTP - threadGetNTPTime: %s, %" PRIu64 ", %" PRIu64 ", %" PRIu64 "\n", strAddress.c_str(), myTime, nowMicros, startMicros);
     }
 
     ntpTime[nServer] = myTime;
@@ -266,6 +268,8 @@ bool SetNTPOffset(const string &strPool)
                 // Account for our wait time.
                 ntpTime[i] += (500000 * nWait);
                 ntpMicros.push_back(ntpTime[i]);
+
+                printf("DEBUG NTP - SetNTPOffset check loop: %" PRIu64 ", tCount: %d\n", ntpTime[i], tCount);
             }
         }
 
@@ -273,14 +277,20 @@ bool SetNTPOffset(const string &strPool)
         for (vector<uint64_t>::iterator it = ntpMicros.begin(); it != ntpMicros.end(); it++)
              avMicros += *it;
 
+        printf("DEBUG NTP - SetNTPOffset sum avMicros: %" PRIu64 ", tCount: %d\n", avMicros, tCount);
+
         // Average of what we got.
         if (ntpMicros.size() > 0)
             avMicros /= ntpMicros.size();
+
+        printf("DEBUG NTP - SetNTPOffset avMicros: %" PRIu64 ", size: %d, tCount: %d\n", avMicros, ntpMicros.size(), tCount);
 
         // Set our offset based on the difference and maintain an average.
         nTimeOffset += (avMicros - nowMicros);
         if (nWait > 1)
             nTimeOffset /= 2;
+
+        printf("DEBUG NTP - SetNTPOffset nTimeOffset: %" PRId64 ", nWait: %d, tCount: %d\n", nTimeOffset, nWait, tCount);
 
         // Add these to our successful NTP Request count.
         tCount += ntpMicros.size();
